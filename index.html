@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pincode Hub.in - Find Your Location</title>
+    <title>PincodeHub.store - Find Your Location</title>
     <meta name="google-site-verification" content="ccIbLiRlgvc3Q4mEKJcokKsH36PoI6CF_lVUtsNi9nU" />
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,18 +39,18 @@
         }
         .logo-area { display: flex; align-items: center; gap: 12px; }
         .logo-box {
-            width: 55px; height: 55px; border-radius: 16px;
-            background: linear-gradient(135deg, #fbbf24, #f97316);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 28px; box-shadow: 0 6px 20px rgba(249,115,22,0.6);
+            width: 60px; height: 60px; border-radius: 16px; overflow: hidden;
+            background: #fff; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 20px rgba(249,115,22,0.6);
             border: 2px solid rgba(255, 255, 255, 0.4);
         }
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
         .brand-title {
-            font-size: 18px; font-weight: bold;
+            font-size: 17px; font-weight: bold;
             background: linear-gradient(to right, #fde047, #f472b6);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .brand-sub { font-size: 11px; color: #d8b4fe; font-weight: 500; }
+        .brand-sub { font-size: 10px; color: #d8b4fe; font-weight: 500; }
         .menu-icon-btn {
             background: #10b981; width: 42px; height: 42px; border-radius: 12px;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -134,11 +134,12 @@
         .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; font-size: 11px; }
         .footer-links span { color: #fde047; text-decoration: underline; cursor: pointer; }
         .footer-credit { margin-top: 15px; text-align: center; font-size: 11px; color: #d8b4fe; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; padding: 15px; z-index: 1000; }
-        .modal-content { background: #2e1065; border: 1px solid rgba(255, 255, 255, 0.3); padding: 20px; border-radius: 16px; max-width: 420px; width: 100%; color: #fff; max-height: 80vh; overflow-y: auto; }
-        .modal-content h3 { color: #fde047; margin-bottom: 10px; font-size: 16px; }
-        .modal-content p { font-size: 12px; color: #e9d5ff; line-height: 1.5; margin-bottom: 10px; }
-        .close-btn { background: #ec4899; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; display: block; margin: 15px auto 0 auto; font-size: 12px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center; padding: 15px; z-index: 1000; }
+        .modal-content { background: #2e1065; border: 1px solid rgba(255, 255, 255, 0.3); padding: 22px; border-radius: 16px; max-width: 480px; width: 100%; color: #fff; max-height: 85vh; overflow-y: auto; text-align: left; }
+        .modal-content h3 { color: #fde047; margin-bottom: 12px; font-size: 17px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px; }
+        .modal-content p, .modal-content ul { font-size: 12px; color: #e9d5ff; line-height: 1.6; margin-bottom: 10px; }
+        .modal-content ul { padding-left: 18px; }
+        .close-btn { background: #ec4899; color: white; border: none; padding: 8px 18px; border-radius: 8px; cursor: pointer; font-weight: bold; display: block; margin: 15px auto 0 auto; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -149,9 +150,11 @@
         </div>
         <div class="header">
             <div class="logo-area">
-                <div class="logo-box">👳‍♂️📍</div>
+                <div class="logo-box">
+                    <img src="logo.png" alt="PincodeHub.store" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150';">
+                </div>
                 <div>
-                    <div class="brand-title">Pincode Hub.in</div>
+                    <div class="brand-title">PincodeHub.store</div>
                     <div class="brand-sub">Find Your Location</div>
                 </div>
             </div>
@@ -225,15 +228,76 @@
             <span onclick="openModal('monetizationModal')">Monetization</span>
         </div>
         <div class="footer-credit">
-            © 2026 Pincode Hub | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b>
+            © 2026 PincodeHub.store | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b>
         </div>
     </div>
-    <div id="menuModal" class="modal"><div class="modal-content"><h3>మెనూ (Menu)</h3><p>Pincode Hub ప్లాట్‌ఫారమ్‌కు స్వాగతం!</p><button class="close-btn" onclick="closeModal('menuModal')">మూసివేయి</button></div></div>
-    <div id="aboutModal" class="modal"><div class="modal-content"><h3>మా గురించి</h3><p>పిన్‌కోడ్ వివరాలు మరియు యూటిలిటీల కోసం డిజిటల్ ప్లాట్‌ఫారమ్.</p><button class="close-btn" onclick="closeModal('aboutModal')">మూసివేయి</button></div></div>
-    <div id="contactModal" class="modal"><div class="modal-content"><h3>సంప్రదించండి</h3><p>SR Media Buzz ద్వారా మమ్మల్ని సంప్రదించండి.</p><button class="close-btn" onclick="closeModal('contactModal')">మూసివేయి</button></div></div>
-    <div id="privacyModal" class="modal"><div class="modal-content"><h3>గోప్యతా విధానం</h3><p>వినియోగదారుల గోప్యతకు మా ప్రాధాన్యత.</p><button class="close-btn" onclick="closeModal('privacyModal')">మూసివేయి</button></div></div>
-    <div id="termsModal" class="modal"><div class="modal-content"><h3>నిబంధనలు</h3><p>పబ్లిక్ API ఆధారంగా సమాచారం అందించబడుతుంది.</p><button class="close-btn" onclick="closeModal('termsModal')">మూసివేయి</button></div></div>
-    <div id="monetizationModal" class="modal"><div class="modal-content"><h3>మానిటైజేషన్</h3><p>అధికారిక మార్గదర్శకాలకు అనుగుణంగా నిర్వహించబడుతుంది.</p><button class="close-btn" onclick="closeModal('monetizationModal')">మూసివేయి</button></div></div>
+
+    <!-- Detailed Modals for AdSense & Monetization Approval -->
+    <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <h3>మెనూ & సేవల వివరాలు</h3>
+            <p><b>PincodeHub.store</b> ప్లాట్‌ఫారమ్‌కు స్వాగతం! మా వెబ్‌సైట్ ద్వారా వినియోగదారులు పొందే ప్రధాన సేవలు:</p>
+            <ul>
+                <li><b>పిన్‌కోడ్ సెర్చ్ టూల్:</b> భారతదేశంలోని ఏ ప్రాంతం, మండలం లేదా జిల్లా పిన్‌కోడ్ అయినా తక్షణమే తెలుసుకోవచ్చు.</li>
+                <li><b>లైవ్ వెదర్ అప్‌డేట్స్:</b> మీ ప్రస్తుత జీపీఎస్ లొకేషన్ ఆధారంగా తాజా వాతావరణ ఉష్ణోగ్రతలను చూడవచ్చు.</li>
+                <li><b>భూమి కొలతల కాలిక్యులేటర్:</b> గుంటలు, ఎకరాలు మరియు చదరపు గజాల మధ్య కొలతలను సులభంగా మార్చుకోవచ్చు.</li>
+                <li><b>అత్యవసర హెల్ప్‌లైన్:</b> పోలీసు, అంబులెన్స్ మరియు ఫైర్ స్టేషన్ నంబర్లను ఒకే చోట పొందవచ్చు.</li>
+            </ul>
+            <button class="close-btn" onclick="closeModal('menuModal')">మూసివేయి</button>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <h3>మా గురించి (About Us)</h3>
+            <p><b>PincodeHub.store</b> అనేది భారతదేశంలోని ప్రతీ గ్రామం, పట్టణం మరియు నగరానికి సంబంధించిన పోస్టల్ పిన్‌కోడ్ సమాచారాన్ని అత్యంత వేగంగా, కచ్చితంగా మరియు ఉచితంగా అందించడానికి రూపొందించబడిన ఒక అడ్వాన్స్‌డ్ డిజిటల్ యూటిలిటీ ప్లాట్‌ఫారమ్.</p>
+            <p>మా ప్రధాన ఉద్దేశం వినియోగదారులకు పోస్టల్ సమాచారంతో పాటు రోజువారీ అవసరమయ్యే లొకేషన్, వాతావరణం మరియు భూమి కొలతల కాలిక్యులేటర్ వంటి సేవలను ఒకే వేదికపై అందుబాటులో ఉంచడం.</p>
+            <p><b>నిర్వహణ & యాజమాన్యం:</b> ఈ ప్లాట్‌ఫారమ్ పూర్తిగా <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b> డిజిటల్ మీడియా సంస్థ వారి ఆధ్వర్యంలో డిజైన్ చేయబడి, నిరంతరం నిర్వహించబడుతోంది.</p>
+            <button class="close-btn" onclick="closeModal('aboutModal')">మూసివేయి</button>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <h3>మమ్మల్ని సంప్రదించండి (Contact Us)</h3>
+            <p>మా వెబ్‌సైట్ సేవలకు సంబంధించి మీకు ఏవైనా సందేహాలు, సలహాలు, ఫీడ్‌బ్యాక్ లేదా సాంకేతిక సమస్యలు ఉంటే మమ్మల్ని సంప్రదించవచ్చు.</p>
+            <p><b>అధికారిక ప్లాట్‌ఫారమ్:</b> SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</p>
+            <p><b>సంప్రదింపు మార్గాలు:</b> మా అధికారిక సోషల్ మీడియా ఛానెల్స్ (WhatsApp, YouTube, Facebook, Instagram మొదలైనవి) ద్వారా మీరు ఎప్పుడైనా మమ్మల్ని కాంటాక్ట్ చేయవచ్చు. మా సోషల్ మీడియా లింక్స్ అన్నీ వెబ్‌సైట్ హోమ్‌పేజీలోనే అందుబాటులో ఉన్నాయి.</p>
+            <button class="close-btn" onclick="closeModal('contactModal')">మూసివేయి</button>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <h3>గోప్యతా విధానం (Privacy Policy)</h3>
+            <p><b>PincodeHub.store</b> మా వెబ్‌సైట్‌ను సందర్శించే ప్రతీ ఒక్కరి గోప్యతను గౌరవిస్తుంది మరియు రక్షిస్తుంది.</p>
+            <p><b>1. డేటా సేకరణ:</b> మా వెబ్‌సైట్ వినియోగదారుల వ్యక్తిగత సమాచారాన్ని (పేరు, ఫోన్ నంబర్ మొదలైనవి) ఎక్కడా సేకరించదు.</p>
+            <p><b>2. లొకేషన్ & వెదర్:</b> జీపీఎస్ మరియు వాతావరణ ఫీచర్లు కేవలం మీ బ్రౌజర్ అనుమతితో మీ పరికరంలోనే తాత్కాలికంగా పనిచేస్తాయి. మేము ఆ సమాచారాన్ని ఎక్కడా సర్వర్‌లో దాచుకోము.</p>
+            <p><b>3. కుకీలు (Cookies):</b> భవిష్యత్తులో మా వెబ్‌సైట్‌లో ప్రకటనలను ప్రదర్శించే థర్డ్-పార్టీ నెట్‌వర్క్‌లు (Google AdSense వంటివి) వినియోగదారుల బ్రౌజింగ్ అనుభవాన్ని మెరుగుపరచడానికి కుకీలను ఉపయోగించవచ్చు.</p>
+            <button class="close-btn" onclick="closeModal('privacyModal')">మూసివేయి</button>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <h3>నిబంధనలు మరియు షరతులు (Terms & Conditions)</h3>
+            <p>ఈ వెబ్‌సైట్‌ను ఉపయోగించడం ద్వారా మీరు క్రింది నిబంధనలకు అంగీకరిస్తున్నారు:</p>
+            <p><b>1. సమాచార కచ్చితత్వం:</b> వెబ్‌సైట్‌లో చూపించే పిన్‌కోడ్ మరియు పోస్టల్ వివరాలు పబ్లిక్ APIల ద్వారా సేకరించబడతాయి. వీటిలో అధికారిక మార్పులకు అనుగుణంగా ఎప్పుడైనా అప్‌డేట్స్ జరగవచ్చు.</p>
+            <p><b>2. ఉచిత సేవ:</b> ఈ ప్లాట్‌ఫారమ్ అందించే అన్ని సేవలు పూర్తిగా ఉచితం మరియు వినియోగదారుల సులభతర అవసరాల కోసం మాత్రమే.</p>
+            <p><b>3. కాపీరైట్ & యాజమాన్యం:</b> ఈ వెబ్‌సైట్ డిజైన్, టెక్స్ట్ మరియు బ్రాండింగ్ పూర్తిగా <b>SR Media Buzz</b> వారి సొంతం. అనుమతి లేకుండా కాపీ చేయడం నిషిద్ధం.</p>
+            <button class="close-btn" onclick="closeModal('termsModal')">మూసివేయి</button>
+        </div>
+    </div>
+
+    <div id="monetizationModal" class="modal">
+        <div class="modal-content">
+            <h3>మానిటైజేషన్ పాలసీ (Monetization & Ads Policy)</h3>
+            <p><b>PincodeHub.store</b> మరియు మా డిజిటల్ మీడియా ఛానెల్ <b>SR Media Buzz</b> సంయుక్తంగా అధికారిక మానిటైజేషన్ మరియు అడ్వర్టైజింగ్ మార్గదర్శకాలకు (Google AdSense Policies) పూర్తిగా అనుగుణంగా నిర్వహించబడుతున్నాయి.</p>
+            <p><b>1. ప్రకటనల ప్రదర్శన:</b> వెబ్‌సైట్ నిర్వహణ ఖర్చులను భరించడానికి మరియు వినియోగదారులకు భవిష్యత్తులోనూ ఉచిత సేవలను నిరంతరం అందించడానికి తగిన ప్రకటనలు (Ads) ప్రదర్శించబడతాయి.</p>
+            <p><b>2. నాణ్యతా ప్రమాణాలు:</b> మా వెబ్‌సైట్‌లోని కంటెంట్ ఎల్లప్పుడూ నిజమైన సమాచారాన్ని అందిస్తూ, ఎలాంటి హానికరమైన లేదా తప్పుదోవ పట్టించే అంశాలకు తావు ఇవ్వకుండా గైడ్‌లైన్స్‌కు లోబడి ఉంటుంది.</p>
+            <button class="close-btn" onclick="closeModal('monetizationModal')">మూసివేయి</button>
+        </div>
+    </div>
         <script>
         function openModal(id) { const m = document.getElementById(id); if(m) m.style.display = 'flex'; }
         function closeModal(id) { const m = document.getElementById(id); if(m) m.style.display = 'none'; }
