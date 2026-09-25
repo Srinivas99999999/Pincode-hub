@@ -47,7 +47,6 @@
             margin-bottom: 15px;
         }
         .logo-area { display: flex; align-items: center; gap: 12px; }
-        
         .logo-box {
             width: 55px; height: 55px;
             border-radius: 16px;
@@ -56,14 +55,7 @@
             font-size: 28px;
             box-shadow: 0 6px 20px rgba(249,115,22,0.6);
             border: 2px solid rgba(255, 255, 255, 0.4);
-            animation: floatLogo 3s ease-in-out infinite;
         }
-        @keyframes floatLogo {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-5px) rotate(3deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
         .brand-title {
             font-size: 18px; font-weight: bold;
             background: linear-gradient(to right, #fde047, #f472b6);
@@ -199,9 +191,7 @@
             gap: 6px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.3);
             border: 1px solid rgba(255,255,255,0.2);
-            transition: transform 0.2s;
         }
-        .soc-btn:hover { transform: scale(1.03); }
         .whatsapp { background: #22c55e; }
         .youtube { background: #ef4444; }
         .facebook { background: #3b82f6; }
@@ -247,11 +237,11 @@
     <div class="container">
         <!-- Live Date & Time -->
         <div class="top-utility-bar">
-            <span id="liveDate">తేదీ లోడ్ అవుతోంది...</span>
+            <span id="liveDate">డేట్ లోడ్ అవుతోంది...</span>
             <span id="liveTime">సమయం...</span>
         </div>
 
-        <!-- Header with Logo -->
+        <!-- Header -->
         <div class="header">
             <div class="logo-area">
                 <div class="logo-box">👳‍♂️📍</div>
@@ -311,7 +301,7 @@
             <button class="search-btn" onclick="searchPincode()">వెతకండి / Search</button>
         </div>
 
-        <div id="loading" class="loading">సమాచారం సేకరించబడుతోంది... దయచేసి వేచి ఉండండి.</div>
+        <div id="loading" class="loading" style="display:none; text-align:center; color:#fef08a; font-size:13px; margin:10px 0;">సమాచారం సేకరించబడుతోంది...</div>
 
         <!-- Results -->
         <div id="resultsContainer" class="results"></div>
@@ -449,4 +439,8 @@
             el.innerText = "లోడ్ అవుతోంది...";
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(async pos => {
-                    try
+                    try {
+                        const res = `https://api.open-meteo.com/v1/forecast?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&current_weather=true`;
+                        const response = await fetch(res);
+                        const data = await response.json();
+                        el.innerText = `
