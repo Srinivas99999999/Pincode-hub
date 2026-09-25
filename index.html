@@ -197,7 +197,7 @@
             <span id="liveTime">సమయం...</span>
         </div>
 
-        <!-- Header with 3D Man Logo Concept -->
+        <!-- Header -->
         <div class="header">
             <div class="logo-area">
                 <div class="logo-box">👨‍💻</div>
@@ -227,7 +227,7 @@
         <div class="cricket-section">
             <h3>🏏 క్రికెట్ లైవ్ స్కోర్ (Cricket Live)</h3>
             <div class="cricket-card" id="cricketScoreText">
-                ప్రస్తుత మ్యాచ్‌ల వివరాలు లోడ్ అవుతున్నాయి...
+                ప్రస్తుత మ్యాచ్‌ల వివరాలు త్వరలో అప్‌డేట్ చేయబడతాయి.
             </div>
         </div>
 
@@ -247,7 +247,7 @@
         </div>
 
         <h2>పిన్‌కోడ్ సెర్చ్</h2>
-        <p class="desc">భారతదేశంలోని ఏ రాష్ట్రం, జిల్లా, మండలం లేదా పిన్‌కోడ్ అయినా (ఇంగ్లీష్ లేదా తెలుగులో) టైప్ చేయండి.</p>
+        <p class="desc">భారతదేశంలోని ఏ రాష్ట్రం, జిల్లా, మండలం లేదా పిన్‌కోడ్ అయినా టైప్ చేయండి.</p>
 
         <!-- Search -->
         <div class="search-box">
@@ -343,14 +343,6 @@
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // Simulated/Live Cricket Score Fetcher
-        function fetchCricketScore() {
-            const cricketEl = document.getElementById('cricketScoreText');
-            // Informational display for active match updates
-            cricketEl.innerHTML = "<b>లైవ్ మ్యాచ్ అప్‌డేట్స్:</b> ప్రస్తుత సిరీస్ / మ్యాచ్ సమాచారం త్వరలో రిఫ్రెష్ చేయబడుతుంది. (Score API Connected)";
-        }
-        fetchCricketScore();
-
         function getLocation() {
             const el = document.getElementById('gpsText');
             if (navigator.geolocation) {
@@ -376,7 +368,7 @@
         }
 
         function calculateLand() {
-            const val = parseFloat(document.getElementById('landValue.value') || document.getElementById('landValue').value);
+            const val = parseFloat(document.getElementById('landValue').value);
             const unit = document.getElementById('landUnit').value;
             const resDiv = document.getElementById('calcResult');
             if (isNaN(val) || val <= 0) { resDiv.innerText = "దయచేసి సరైన విలువ ఇవ్వండి."; return; }
@@ -418,6 +410,14 @@
                     resultsContainer.innerHTML = `<div style="background: rgba(239,68,68,0.2); padding: 8px; border-radius: 6px; text-align: center; color: #fca5a5; font-size: 11px;">సమాచారం లభించలేదు.</div>`;
                 }
             } catch (err) {
-                loading.style.display, loading.style.display = 'none', 'none';
+                loading.style.display = 'none';
                 resultsContainer.innerHTML = `<div style="background: rgba(239,68,68,0.2); padding: 8px; border-radius: 6px; text-align: center; color: #fca5a5; font-size: 11px;">సర్వర్ లోపం.</div>`;
-     
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') { searchPincode(); }
+        });
+    </script>
+</body>
+</html>
