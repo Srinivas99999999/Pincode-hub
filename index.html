@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pincode Hub & Utilities - SR Media Buzz</title>
+    <title>Pincode Hub.in - Find Your Location</title>
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="ccIbLiRlgvc3Q4mEKJcokKsH36PoI6CF_lVUtsNi9nU" />
     <style>
@@ -47,31 +47,45 @@
             padding-bottom: 15px;
             margin-bottom: 15px;
         }
-        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        
+        /* 3D Animated Logo Icon */
         .logo-box {
             background: linear-gradient(45deg, #fbbf24, #f97316);
-            width: 45px; height: 45px;
-            border-radius: 14px;
+            width: 55px; height: 55px;
+            border-radius: 16px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 22px;
-            box-shadow: 0 4px 15px rgba(249,115,22,0.5);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 28px;
+            box-shadow: 0 6px 20px rgba(249,115,22,0.6);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            animation: floatLogo 3s ease-in-out infinite;
         }
+        @keyframes floatLogo {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
         .brand-title {
-            font-size: 18px; font-weight: bold;
+            font-size: 20px; font-weight: bold;
             background: linear-gradient(to right, #fde047, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .brand-sub { font-size: 10px; color: #d8b4fe; }
-        .badge {
-            background: linear-gradient(135deg, #9333ea, #c084fc);
-            padding: 6px 10px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: bold;
-            color: #fff;
+        .brand-sub { font-size: 11px; color: #d8b4fe; font-weight: 500; }
+        
+        .menu-icon-btn {
+            background: #10b981;
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 4px; cursor: pointer; border: none;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
         }
+        .menu-icon-btn span {
+            display: block; width: 20px; height: 2px; background: white; border-radius: 2px;
+        }
+
         .grid-utils {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -160,6 +174,50 @@
         .emergency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 11px; text-align: center; }
         .em-box { background: rgba(239, 68, 68, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.3); }
 
+        /* Social Media Section matching user style */
+        .social-box-container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 14px;
+            text-align: center;
+        }
+        .social-box-container h4 {
+            font-size: 12px; color: #fde047; margin-bottom: 12px;
+        }
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .soc-btn {
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.2s;
+        }
+        .soc-btn:hover { transform: scale(1.03); }
+        .whatsapp { background: #22c55e; }
+        .youtube { background: #ef4444; }
+        .facebook { background: #3b82f6; }
+        .instagram { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af); }
+        .twitter { background: #1f2937; }
+        .snapchat { background: #eab308; color: #1f2937; }
+        .threads { background: #111827; }
+        .tumblr { background: #1e3a8a; }
+        .yahoo { background: #7c3aed; }
+        .autoplay { background: #f97316; }
+
         .footer-links {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
             margin-top: 20px; font-size: 11px;
@@ -199,16 +257,18 @@
             <span id="liveTime">సమయం...</span>
         </div>
 
-        <!-- Header -->
+        <!-- Header with 3D Animated Logo -->
         <div class="header">
             <div class="logo-area">
-                <div class="logo-box">👨‍💻</div>
+                <div class="logo-box">👳‍♂️</div>
                 <div>
-                    <div class="brand-title">Pincode Hub</div>
-                    <div class="brand-sub">All India Postal Database</div>
+                    <div class="brand-title">Pincode Hub.in</div>
+                    <div class="brand-sub">Find Your Location</div>
                 </div>
             </div>
-            <div class="badge">✨ SR Media Buzz</div>
+            <button class="menu-icon-btn" onclick="openModal('menuModal')">
+                <span></span><span></span><span></span>
+            </button>
         </div>
 
         <!-- GPS & Weather -->
@@ -248,7 +308,7 @@
             <div id="calcResult" class="calc-result"></div>
         </div>
 
-        <h2>పిన్‌కోడ్ సెర్చ్</h2>
+        <h2>Find Your Pincode And PostOffice Just One Click Away</h2>
         <p class="desc">భారతదేశంలోని ఏ రాష్ట్రం, జిల్లా, మండలం లేదా పిన్‌కోడ్ అయినా టైప్ చేయండి.</p>
 
         <!-- Search -->
@@ -272,6 +332,23 @@
             </div>
         </div>
 
+        <!-- Social Media Channels Section -->
+        <div class="social-box-container">
+            <h4>🌐 మా సోషల్ మీడియా ఛానెల్స్ & ప్లాట్‌ఫార్మ్స్‌ను ఫాలో అవ్వండి:</h4>
+            <div class="social-grid">
+                <a href="#" class="soc-btn whatsapp">💬 WhatsApp</a>
+                <a href="#" class="soc-btn youtube">▶️ YouTube</a>
+                <a href="#" class="soc-btn facebook">👥 Facebook</a>
+                <a href="#" class="soc-btn instagram">📸 Instagram</a>
+                <a href="#" class="soc-btn twitter">❌ X (Twitter)</a>
+                <a href="#" class="soc-btn snapchat">🟡 Snapchat</a>
+                <a href="#" class="soc-btn threads">🧵 Threads</a>
+                <a href="#" class="soc-btn tumblr">🇹 Tumblr</a>
+                <a href="#" class="soc-btn yahoo">🟣 Yahoo</a>
+                <a href="#" class="soc-btn autoplay">▶️ AtoPlay</a>
+            </div>
+        </div>
+
         <!-- Footer Links -->
         <div class="footer-links">
             <a onclick="openModal('aboutModal')">About Us</a>
@@ -283,11 +360,19 @@
 
         <!-- Credit -->
         <div class="footer-credit">
-            Created with ❤️ by <b>SR Media Buzz</b>
+            © 2026 Pincode Hub | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b>
         </div>
     </div>
 
     <!-- Modals -->
+    <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <h3>మెనూ (Menu)</h3>
+            <p>Pincode Hub ప్లాట్‌ఫారమ్‌కు స్వాగతం! ఇక్కడ మీరు అన్ని సేవలను సులభంగా పొందవచ్చు.</p>
+            <button class="close-btn" onclick="closeModal('menuModal')">మూసివేయి</button>
+        </div>
+    </div>
+
     <div id="aboutModal" class="modal">
         <div class="modal-content">
             <h3>మా గురించి (About Us)</h3>
@@ -364,62 +449,4 @@
                         const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&current_weather=true`);
                         const data = await res.json();
                         el.innerText = `ఉష్ణోగ్రత: ${data.current_weather.temperature}°C`;
-                    } catch (e) { el.innerText = "డేటా అందలేదు."; }
-                }, () => { el.innerText = "పర్మిషన్ ఇవ్వండి."; });
-            } else { el.innerText = "సపోర్ట్ లేదు."; }
-        }
-
-        function calculateLand() {
-            const val = parseFloat(document.getElementById('landValue').value);
-            const unit = document.getElementById('landUnit').value;
-            const resDiv = document.getElementById('calcResult');
-            if (isNaN(val) || val <= 0) { resDiv.innerText = "దయచేసి సరైన విలువ ఇవ్వండి."; return; }
-            let guntas = 0, acres = 0, sqYards = 0;
-            if (unit === 'guntas') { guntas = val; acres = guntas / 40; sqYards = guntas * 121; }
-            else if (unit === 'acres') { acres = val; guntas = acres * 40; sqYards = guntas * 121; }
-            else if (unit === 'sqyards') { sqYards = val; guntas = sqYards / 121; acres = guntas / 40; }
-            resDiv.innerHTML = `<b>${acres.toFixed(2)} ఎకరాలు</b> | <b>${guntas.toFixed(2)} గుంటలు</b> | <b>${sqYards.toFixed(0)} గజాలు</b>`;
-        }
-
-        async function searchPincode() {
-            const query = document.getElementById('searchInput').value.trim();
-            const resultsContainer = document.getElementById('resultsContainer');
-            const loading = document.getElementById('loading');
-            if (!query) { alert('దయచేసి పిన్‌కోడ్ లేదా ప్రాంతం పేరు టైప్ చేయండి!'); return; }
-            resultsContainer.innerHTML = '';
-            loading.style.display = 'block';
-            try {
-                let url = /^\d{6}$/.test(query) ? `https://api.postalpincode.in/pincode/${query}` : `https://api.postalpincode.in/postoffice/${encodeURIComponent(query)}`;
-                const res = await fetch(url);
-                const data = await res.json();
-                loading.style.display = 'none';
-                if (data && data[0].Status === 'Success') {
-                    let html = `<p style="font-size: 11px; color: #4ade80; margin-bottom: 4px;">మొత్తం ${data[0].PostOffice.length} ఫలితాలు:</p>`;
-                    data[0].PostOffice.forEach(po => {
-                        html += `
-                            <div class="result-card">
-                                <div class="result-info">
-                                    <h3>${po.Name}</h3>
-                                    <p>మండలం: <b>${po.Taluk || po.Block || 'N/A'}</b></p>
-                                    <p>జిల్లా: <b>${po.District}</b> | రాష్ట్రం: <b>${po.State}</b></p>
-                                )}
-                                <div class="pin-badge">${po.Pincode}</div>
-                            </div>
-                        `;
-                    });
-                    resultsContainer.innerHTML = html;
-                } else {
-                    resultsContainer.innerHTML = `<div style="background: rgba(239,68,68,0.2); padding: 8px; border-radius: 6px; text-align: center; color: #fca5a5; font-size: 11px;">సమాచారం లభించలేదు.</div>`;
-                }
-            } catch (err) {
-                loading.style.display = 'none';
-                resultsContainer.innerHTML = `<div style="background: rgba(239,68,68,0.2); padding: 8px; border-radius: 6px; text-align: center; color: #fca5a5; font-size: 11px;">సర్వర్ లోపం.</div>`;
-            }
-        }
-
-        document.getElementById('searchInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') { searchPincode(); }
-        });
-    </script>
-</body>
-</html>
+                    } catch (e) { el.innerText = "డేటా అందలేదు.";
