@@ -440,7 +440,7 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(async pos => {
                     try {
-                        const res = `https://api.open-meteo.com/v1/forecast?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&current_weather=true`;
-                        const response = await fetch(res);
+                        const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&current_weather=true`;
+                        const response = await fetch(apiUrl);
                         const data = await response.json();
-                        el.innerText = `
+                        el.innerTe
