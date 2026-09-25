@@ -49,11 +49,11 @@
         .logo-area { display: flex; align-items: center; gap: 12px; }
         
         .logo-box {
-            width: 60px; height: 60px;
+            width: 55px; height: 55px;
             border-radius: 16px;
-            background: linear-gradient(45deg, #fbbf24, #f97316);
+            background: linear-gradient(135deg, #fbbf24, #f97316);
             display: flex; align-items: center; justify-content: center;
-            font-size: 30px;
+            font-size: 28px;
             box-shadow: 0 6px 20px rgba(249,115,22,0.6);
             border: 2px solid rgba(255, 255, 255, 0.4);
             animation: floatLogo 3s ease-in-out infinite;
@@ -251,10 +251,10 @@
             <span id="liveTime">సమయం...</span>
         </div>
 
-        <!-- Header with Original Character Logo -->
+        <!-- Header with Logo -->
         <div class="header">
             <div class="logo-area">
-                <div class="logo-box" title="Pincode Hub">👳‍♂️</div>
+                <div class="logo-box">👳‍♂️📍</div>
                 <div>
                     <div class="brand-title">Pincode Hub.in</div>
                     <div class="brand-sub">Find Your Location</div>
@@ -448,4 +448,5 @@
             if (!el) return;
             el.innerText = "లోడ్ అవుతోంది...";
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(as
+                navigator.geolocation.getCurrentPosition(async pos => {
+                    try
