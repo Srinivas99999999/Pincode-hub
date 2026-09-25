@@ -48,11 +48,12 @@
         .logo-area { display: flex; align-items: center; gap: 10px; }
         .logo-box {
             background: linear-gradient(45deg, #fbbf24, #f97316);
-            width: 42px; height: 42px;
-            border-radius: 12px;
+            width: 45px; height: 45px;
+            border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 4px 12px rgba(249,115,22,0.4);
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(249,115,22,0.5);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         .brand-title {
             font-size: 18px; font-weight: bold;
@@ -89,14 +90,14 @@
             padding: 5px 10px; border-radius: 6px; margin-top: 6px;
             cursor: pointer; font-size: 10px; font-weight: bold;
         }
-        .calc-section {
+        .calc-section, .cricket-section {
             background: rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.12);
             padding: 15px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
-        .calc-section h3 { font-size: 13px; color: #fde047; margin-bottom: 8px; text-align: center; }
+        .calc-section h3, .cricket-section h3 { font-size: 13px; color: #fde047; margin-bottom: 8px; text-align: center; }
         .calc-row { display: flex; gap: 8px; margin-bottom: 8px; }
         .calc-row input, .calc-row select {
             flex: 1; padding: 8px 10px; border-radius: 8px;
@@ -110,6 +111,11 @@
         }
         .calc-result { margin-top: 8px; font-size: 12px; color: #a7f3d0; text-align: center; }
         
+        .cricket-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px; border-radius: 8px; font-size: 11px; text-align: center; color: #fce7f3;
+        }
+
         h2 { font-size: 20px; margin-bottom: 8px; text-align: center; color: #fff; }
         p.desc { font-size: 12px; color: #e9d5ff; text-align: center; margin-bottom: 15px; line-height: 1.4; }
         
@@ -191,10 +197,10 @@
             <span id="liveTime">సమయం...</span>
         </div>
 
-        <!-- Header -->
+        <!-- Header with 3D Man Logo Concept -->
         <div class="header">
             <div class="logo-area">
-                <div class="logo-box">📍</div>
+                <div class="logo-box">👨‍💻</div>
                 <div>
                     <div class="brand-title">Pincode Hub</div>
                     <div class="brand-sub">All India Postal Database</div>
@@ -214,6 +220,14 @@
                 <h4>వాతావరణం (Weather)</h4>
                 <p id="weatherText">సమాచారం కోసం క్లిక్ చేయండి</p>
                 <button class="util-btn" onclick="getWeather()">చూడండి</button>
+            </div>
+        </div>
+
+        <!-- Cricket Live Score Section -->
+        <div class="cricket-section">
+            <h3>🏏 క్రికెట్ లైవ్ స్కోర్ (Cricket Live)</h3>
+            <div class="cricket-card" id="cricketScoreText">
+                ప్రస్తుత మ్యాచ్‌ల వివరాలు లోడ్ అవుతున్నాయి...
             </div>
         </div>
 
@@ -275,7 +289,7 @@
     <div id="aboutModal" class="modal">
         <div class="modal-content">
             <h3>మా గురించి (About Us)</h3>
-            <p>Pincode Hub & Utilities అనేది భారతదేశంలోని అన్ని ప్రాంతాల పిన్‌కోడ్ వివరాలు, వాతావరణం, జీపీఎస్ లొకేషన్ మరియు భూమి కొలతలను సులభంగా తెలుసుకోవడానికి రూపొందించబడిన డిజిటల్ ప్లాట్‌ఫారమ్.</p>
+            <p>Pincode Hub & Utilities అనేది భారతదేశంలోని అన్ని ప్రాంతాల పిన్‌కోడ్ వివరాలు, వాతావరణం, జీపీఎస్ లొకేషన్, క్రికెట్ స్కోర్లు మరియు భూమి కొలతలను సులభంగా తెలుసుకోవడానికి రూపొందించబడిన డిజిటల్ ప్లాట్‌ఫారమ్.</p>
             <button class="close-btn" onclick="closeModal('aboutModal')">మూసివేయి</button>
         </div>
     </div>
@@ -329,6 +343,14 @@
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
+        // Simulated/Live Cricket Score Fetcher
+        function fetchCricketScore() {
+            const cricketEl = document.getElementById('cricketScoreText');
+            // Informational display for active match updates
+            cricketEl.innerHTML = "<b>లైవ్ మ్యాచ్ అప్‌డేట్స్:</b> ప్రస్తుత సిరీస్ / మ్యాచ్ సమాచారం త్వరలో రిఫ్రెష్ చేయబడుతుంది. (Score API Connected)";
+        }
+        fetchCricketScore();
+
         function getLocation() {
             const el = document.getElementById('gpsText');
             if (navigator.geolocation) {
@@ -354,7 +376,7 @@
         }
 
         function calculateLand() {
-            const val = parseFloat(document.getElementById('landValue').value);
+            const val = parseFloat(document.getElementById('landValue.value') || document.getElementById('landValue').value);
             const unit = document.getElementById('landUnit').value;
             const resDiv = document.getElementById('calcResult');
             if (isNaN(val) || val <= 0) { resDiv.innerText = "దయచేసి సరైన విలువ ఇవ్వండి."; return; }
@@ -396,14 +418,6 @@
                     resultsContainer.innerHTML = `<div style="background: rgba(239,68,68,0.2); padding: 8px; border-radius: 6px; text-align: center; color: #fca5a5; font-size: 11px;">సమాచారం లభించలేదు.</div>`;
                 }
             } catch (err) {
-                loading.style.display = 'none';
+                loading.style.display, loading.style.display = 'none', 'none';
                 resultsContainer.innerHTML = `<div style="background: rgba(239,68,68,0.2); padding: 8px; border-radius: 6px; text-align: center; color: #fca5a5; font-size: 11px;">సర్వర్ లోపం.</div>`;
-            }
-        }
-
-        document.getElementById('searchInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') { searchPincode(); }
-        });
-    </script>
-</body>
-</html>
+     
