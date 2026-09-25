@@ -49,7 +49,6 @@
         }
         .logo-area { display: flex; align-items: center; gap: 12px; }
         
-        /* 3D Animated Logo Icon */
         .logo-box {
             background: linear-gradient(45deg, #fbbf24, #f97316);
             width: 55px; height: 55px;
@@ -174,7 +173,6 @@
         .emergency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 11px; text-align: center; }
         .em-box { background: rgba(239, 68, 68, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.3); }
 
-        /* Social Media Section matching user style */
         .social-box-container {
             margin-top: 20px;
             background: rgba(255, 255, 255, 0.06);
@@ -222,13 +220,12 @@
             display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
             margin-top: 20px; font-size: 11px;
         }
-        .footer-links a { color: #fde047; text-decoration: underline; cursor: pointer; }
+        .footer-links span { color: #fde047; text-decoration: underline; cursor: pointer; }
         .footer-credit {
             margin-top: 15px; text-align: center; font-size: 11px; color: #d8b4fe;
             border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px;
         }
 
-        /* Modal Popup */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center;
@@ -289,7 +286,7 @@
         <div class="cricket-section">
             <h3>🏏 క్రికెట్ లైవ్ స్కోర్ (Cricket Live)</h3>
             <div class="cricket-card" id="cricketScoreText">
-                ప్రస్తుత మ్యాచ్‌ల వివరాలు త్వరలో అప్‌డేట్ చేయబడతాయి.
+                ప్రస్తుత మ్యాచ్‌ల వివరాలు అందుబాటులో ఉన్నాయి.
             </div>
         </div>
 
@@ -336,26 +333,26 @@
         <div class="social-box-container">
             <h4>🌐 మా సోషల్ మీడియా ఛానెల్స్ & ప్లాట్‌ఫార్మ్స్‌ను ఫాలో అవ్వండి:</h4>
             <div class="social-grid">
-                <a href="#" class="soc-btn whatsapp">💬 WhatsApp</a>
-                <a href="#" class="soc-btn youtube">▶️ YouTube</a>
-                <a href="#" class="soc-btn facebook">👥 Facebook</a>
-                <a href="#" class="soc-btn instagram">📸 Instagram</a>
-                <a href="#" class="soc-btn twitter">❌ X (Twitter)</a>
-                <a href="#" class="soc-btn snapchat">🟡 Snapchat</a>
-                <a href="#" class="soc-btn threads">🧵 Threads</a>
-                <a href="#" class="soc-btn tumblr">🇹 Tumblr</a>
-                <a href="#" class="soc-btn yahoo">🟣 Yahoo</a>
-                <a href="#" class="soc-btn autoplay">▶️ AtoPlay</a>
+                <a href="https://whatsapp.com" target="_blank" class="soc-btn whatsapp">💬 WhatsApp</a>
+                <a href="https://youtube.com" target="_blank" class="soc-btn youtube">▶️ YouTube</a>
+                <a href="https://facebook.com" target="_blank" class="soc-btn facebook">👥 Facebook</a>
+                <a href="https://instagram.com" target="_blank" class="soc-btn instagram">📸 Instagram</a>
+                <a href="https://twitter.com" target="_blank" class="soc-btn twitter">❌ X (Twitter)</a>
+                <a href="https://snapchat.com" target="_blank" class="soc-btn snapchat">🟡 Snapchat</a>
+                <a href="https://threads.net" target="_blank" class="soc-btn threads">🧵 Threads</a>
+                <a href="https://tumblr.com" target="_blank" class="soc-btn tumblr">🇹 Tumblr</a>
+                <a href="https://yahoo.com" target="_blank" class="soc-btn yahoo">🟣 Yahoo</a>
+                <a href="https://atoplay.com" target="_blank" class="soc-btn autoplay">▶️ AtoPlay</a>
             </div>
         </div>
 
         <!-- Footer Links -->
         <div class="footer-links">
-            <a onclick="openModal('aboutModal')">About Us</a>
-            <a onclick="openModal('contactModal')">Contact Us</a>
-            <a onclick="openModal('privacyModal')">Privacy Policy</a>
-            <a onclick="openModal('termsModal')">Terms</a>
-            <a onclick="openModal('monetizationModal')">Monetization</a>
+            <span onclick="openModal('aboutModal')">About Us</span>
+            <span onclick="openModal('contactModal')">Contact Us</span>
+            <span onclick="openModal('privacyModal')">Privacy Policy</span>
+            <span onclick="openModal('termsModal')">Terms</span>
+            <span onclick="openModal('monetizationModal')">Monetization</span>
         </div>
 
         <!-- Credit -->
@@ -376,7 +373,7 @@
     <div id="aboutModal" class="modal">
         <div class="modal-content">
             <h3>మా గురించి (About Us)</h3>
-            <p>Pincode Hub & Utilities అనేది భారతదేశంలోని అన్ని ప్రాంతాల పిన్‌కోడ్ వివరాలు, వాతావరణం, జీపీఎస్ లొకేషన్, క్రికెట్ స్కోర్లు మరియు భూమి కొలతలను సులభంగా తెలుసుకోవడానికి రూపొందించబడిన డిజిటల్ ప్లాట్‌ఫారమ్.</p>
+            <p>Pincode Hub & Utilities అనేది భారతదేశంలోని అన్ని ప్రాంతాల పిన్‌కోడ్ వివరాలు, వాతావరణం, జీపీఎస్ లొకేషన్ మరియు భూమి కొలతలను సులభంగా తెలుసుకోవడానికి రూపొందించబడిన డిజిటల్ ప్లాట్‌ఫారమ్.</p>
             <button class="close-btn" onclick="closeModal('aboutModal')">మూసివేయి</button>
         </div>
     </div>
@@ -418,20 +415,29 @@
     </div>
 
     <script>
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function openModal(id) { 
+            const m = document.getElementById(id);
+            if(m) m.style.display = 'flex'; 
+        }
+        function closeModal(id) { 
+            const m = document.getElementById(id);
+            if(m) m.style.display = 'none'; 
+        }
 
         function updateDateTime() {
             const now = new Date();
             const opts = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-            document.getElementById('liveDate').innerText = now.toLocaleDateString('te-IN', opts);
-            document.getElementById('liveTime').innerText = now.toLocaleTimeString('en-IN');
+            const dateEl = document.getElementById('liveDate');
+            const timeEl = document.getElementById('liveTime');
+            if(dateEl) dateEl.innerText = now.toLocaleDateString('te-IN', opts);
+            if(timeEl) timeEl.innerText = now.toLocaleTimeString('en-IN');
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
         function getLocation() {
             const el = document.getElementById('gpsText');
+            if (!el) return;
             if (navigator.geolocation) {
                 el.innerText = "లొకేషన్ చూస్తోంది...";
                 navigator.geolocation.getCurrentPosition(pos => {
@@ -442,11 +448,6 @@
 
         function getWeather() {
             const el = document.getElementById('weatherText');
+            if (!el) return;
             el.innerText = "లోడ్ అవుతోంది...";
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(async pos => {
-                    try {
-                        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${pos.coords.latitude}&longitude=${pos.coords.longitude}&current_weather=true`);
-                        const data = await res.json();
-                        el.innerText = `ఉష్ణోగ్రత: ${data.current_weather.temperature}°C`;
-                    } catch (e) { el.innerText = "డేటా అందలేదు.";
