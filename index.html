@@ -331,8 +331,8 @@
         .visitor-counter {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            margin: 12px 0;
-            padding: 10px;
+            margin: 15px 0 10px 0;
+            padding: 12px;
             border-radius: 10px;
             display: flex;
             justify-content: space-around;
@@ -344,9 +344,21 @@
         }
         .visitor-box b { 
             display: block; 
-            font-size: 14px; 
+            font-size: 15px; 
             color: #fde047; 
-            margin-top: 2px;
+            margin-top: 3px;
+        }
+        .brand-credit {
+            background: rgba(126, 34, 206, 0.3);
+            border: 1px solid rgba(216, 180, 254, 0.4);
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 10px 0 5px 0;
+            font-size: 12px;
+            color: #fde047;
+            font-weight: bold;
+            line-height: 1.5;
         }
         .footer-links {
             display: flex;
@@ -357,14 +369,6 @@
             flex-wrap: wrap;
         }
         .footer-links a { color: #d8b4fe; text-decoration: underline; cursor: pointer; }
-        .footer-copy {
-            text-align: center;
-            font-size: 11px;
-            color: #fde047;
-            margin-top: 15px;
-            padding-bottom: 5px;
-            line-height: 1.4;
-        }
         .page-view { display: none; }
         .page-view.active { display: block; }
     </style>
@@ -449,18 +453,6 @@
                 <div id="resultsContainer" class="results"></div>
             </div>
 
-            <!-- Live Visitor Counter Inside Container -->
-            <div class="visitor-counter">
-                <div class="visitor-box">
-                    🇮🇳 ఇండియా విజిటర్స్
-                    <b id="indiaCount">15,420</b>
-                </div>
-                <div class="visitor-box">
-                    🌍 ఫారెన్ విజిటర్స్
-                    <b id="foreignCount">1,350</b>
-                </div>
-            </div>
-
             <div class="utility-box">
                 <h3>🚨 అత్యవసర నంబర్లు (Emergency Helpline)</h3>
                 <div class="emergency-grid">
@@ -485,6 +477,23 @@
                     <a href="https://google.com" target="_blank" class="social-btn aioplay">⚡ AIOPay</a>
                 </div>
             </div>
+
+            <!-- Live Visitor Counter Placed at the Bottom -->
+            <div class="visitor-counter">
+                <div class="visitor-box">
+                    🇮🇳 ఇండియా విజిటర్స్
+                    <b id="indiaCount">15,420</b>
+                </div>
+                <div class="visitor-box">
+                    🌍 ఫారెన్ విజిటర్స్
+                    <b id="foreignCount">1,350</b>
+                </div>
+            </div>
+
+            <!-- Prominent SR Media Buzz Copyright & Management Credit Banner at the Bottom -->
+            <div class="brand-credit">
+                © 2026 Pincode Hub.store<br>Designed & Managed by SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)
+            </div>
         </div>
 
         <div id="detailsPage" class="page-view">
@@ -505,15 +514,7 @@
             <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:12px; margin-bottom:10px;">← వెనక్కి</button>
             <h2 style="font-size: 16px; margin-bottom: 10px; text-align: center;">మమ్మల్ని సంప్రదించండి (Contact Us)</h2>
             <p style="font-size: 12px; line-height: 1.6; color: #e9d5ff;">
-                మీకు మా వెబ్‌సైట్ (Pincode Hub.store) గురించి ఏవైనా సందేహాలు, సలహాలు లేదా వ్యాపార విచారణలు ఉంటే మమ్మల్ని సంప్రదించవచ్చు.<br><br>
-                <b>నిర్వహణ:</b> SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)<br>
-                <b>ఈమెయిల్:</b> support@pincodehub.store<br>
-                <b>చిరునామా:</b> జగన్నాధపురం, భారతదేశం.
-            </p>
-        </div>
-
-        <div id="privacyPage" class="page-view">
-            <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:6px 10px; border-radius:6px; 
+                మీకు మా వెబ్‌సైట్ (Pincode Hub.store) గురించి ఏవైనా సందేహాలు, సలహాలు లేదా వ్యాపార విచారణలు ఉంటే మమ్మల్ని సంప్రదించండి
                     <script>
         function openNav() {
             document.getElementById("mySidebar").style.width = "260px";
@@ -683,22 +684,6 @@
             }
         });
     </script>
-                    <div class="visitor-counter">
-        <div class="visitor-box">
-            🇮🇳 ఇండియా విజిటర్స్
-            <b id="indiaCount">15,420</b>
-        </div>
-        <div class="visitor-box">
-            🌍 ఫారెన్ విజిటర్స్
-            <b id="foreignCount">1,350</b>
-        </div>
-    </div>
-
-    <div class="footer-copy">
-        © 2026 Pincode Hub.store | Designed & Managed by SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)
-    </div>
-            </div>
-                
 </body>
-            </html>
-                
+        </html>
+            
