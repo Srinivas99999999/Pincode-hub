@@ -66,7 +66,7 @@
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-radius: 10px;
             cursor: pointer;
             font-size: 18px;
@@ -90,7 +90,7 @@
             box-shadow: -5px 0 15px rgba(0,0,0,0.5);
             border-left: 1px solid rgba(255,255,255,0.2);
         }
-        .sidebar a, .sidebar .sidebar-content {
+        .sidebar a {
             padding: 12px 24px;
             text-decoration: none;
             font-size: 16px;
@@ -109,7 +109,6 @@
             font-size: 24px;
             cursor: pointer;
         }
-        /* Form inside menu */
         .sidebar-form {
             padding: 20px;
             background: rgba(255,255,255,0.05);
@@ -156,7 +155,7 @@
             gap: 10px;
             margin-bottom: 20px;
         }
-        input[type="text"] {
+        input[type="text"], select {
             width: 100%;
             padding: 14px 16px;
             border-radius: 12px;
@@ -232,23 +231,42 @@
             color: white;
             white-space: nowrap;
         }
-        /* Cricket Section */
-        .cricket-section {
+        /* Utility Sections */
+        .utility-box {
             background: rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 15px;
             border-radius: 12px;
             margin-top: 20px;
-            text-align: center;
         }
-        .cricket-section h3 {
+        .utility-box h3 {
             font-size: 15px;
             color: #fbcfe8;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .cricket-section p {
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .emergency-btn {
+            background: rgba(239, 68, 68, 0.3);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
             font-size: 13px;
-            color: #fed7aa;
+            font-weight: bold;
+            display: block;
+            transition: 0.2s;
+        }
+        .emergency-btn:hover {
+            background: rgba(239, 68, 68, 0.5);
         }
         /* Visitors Counter */
         .visitor-counter {
@@ -276,12 +294,19 @@
             color: #fca5a5;
             font-size: 13px;
         }
-        /* Dynamic Pages View */
         .page-view {
             display: none;
         }
         .page-view.active {
             display: block;
+        }
+        .footer-credit {
+            text-align: center;
+            font-size: 12px;
+            color: #d8b4fe;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(255,255,255,0.2);
         }
     </style>
 </head>
@@ -305,7 +330,7 @@
     </div>
 
     <div class="container">
-        <!-- Header with Logo & Menu Button -->
+        <!-- Header with Logo -->
         <div class="header">
             <div class="logo-area">
                 <div class="logo-box">📍</div>
@@ -317,26 +342,49 @@
             <button class="menu-btn" onclick="openNav()">☰</button>
         </div>
 
-        <!-- PAGE 1: HOME (Pincode Search & Cricket) -->
+        <!-- PAGE 1: HOME (Pincode Search, Cricket, Land Calculator, Emergency) -->
         <div id="homePage" class="page-view active">
             <h2>పిన్‌కోడ్ సెర్చ్</h2>
             <p class="desc">భారతదేశంలోని ఏ రాష్ట్రం, జిల్లా, మండలం లేదా పిన్‌కోడ్ అయినా టైప్ చేసి వెంటనే వివరాలు పొందండి.</p>
 
-            <!-- Search Input & Button -->
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="ఉదా: 500001 లేదా Mulakalapalli...">
                 <button class="main-btn" onclick="searchPincode()">వెతకండి / Search</button>
             </div>
 
             <div id="loading" class="loading">సమాచారం సేకరించబడుతోంది... దయచేసి వేచి ఉండండి.</div>
-
-            <!-- Results View -->
             <div id="resultsContainer" class="results"></div>
 
-            <!-- Cricket Live Scores Section (Placed below Search as requested) -->
-            <div class="cricket-section">
+            <!-- Cricket Live Scores Section -->
+            <div class="utility-box">
                 <h3>🏏 క్రికెట్ లైవ్ స్కోర్ (Cricket Live)</h3>
-                <p>ప్రస్తుతం లైవ్ మ్యాచ్ అప్‌డేట్‌లు అందుబాటులో ఉన్నాయి.</p>
+                <p style="font-size: 13px; color: #fed7aa;">ప్రస్తుతం లైవ్ మ్యాచ్ అప్‌డేట్‌లు అందుబాటులో ఉన్నాయి.</p>
+            </div>
+
+            <!-- Land Calculator Section (భూమి కొలతలు) -->
+            <div class="utility-box">
+                <h3>📐 భూమి కొలతల కాలిక్యులేటర్ (Land Calculator)</h3>
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <input type="number" id="landInput" placeholder="విలువ ఇవ్వండి" style="padding:10px; font-size:14px;">
+                    <select id="landUnit" style="padding:10px; font-size:14px; background:#fff; color:#000;">
+                        <option value="cents">సెంట్లు (Cents)</option>
+                        <option value="acres">ఎకరాలు (Acres)</option>
+                        <option value="guntas">గుంటలు (Guntas)</option>
+                    </select>
+                </div>
+                <button class="main-btn" style="padding:10px; font-size:14px;" onclick="convertLand()">లెక్కించండి (Convert)</button>
+                <p id="landResult" style="margin-top:10px; font-size:13px; color:#4ade80; text-align:center;"></p>
+            </div>
+
+            <!-- Emergency Numbers Section (డైరెక్ట్ కాల్) -->
+            <div class="utility-box">
+                <h3>🚨 ఎమర్జెన్సీ హెల్ప్‌లైన్ నంబర్లు (Click to Call)</h3>
+                <div class="emergency-grid" style="margin-top:10px;">
+                    <a href="tel:112" class="emergency-btn">🚨 ఎమర్జెన్సీ: 112</a>
+                    <a href="tel:100" class="emergency-btn">👮 పోలీస్: 100</a>
+                    <a href="tel:108" class="emergency-btn">🚑 అంబులెన్స్: 108</a>
+                    <a href="tel:101" class="emergency-btn">🚒 ఫైర్: 101</a>
+                </div>
             </div>
         </div>
 
@@ -344,17 +392,15 @@
         <div id="detailsPage" class="page-view">
             <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:8px 12px; border-radius:8px; cursor:pointer; margin-bottom:15px;">← వెనక్కి (Back)</button>
             <h2>పోస్ట్ ఆఫీస్ వివరాలు</h2>
-            <div id="detailedInfoContainer" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-top: 15px;">
-                <!-- Selected item details will appear here -->
-            </div>
+            <div id="detailedInfoContainer" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-top: 15px;"></div>
         </div>
 
         <!-- PAGE 3: ABOUT US -->
         <div id="aboutPage" class="page-view">
             <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:8px 12px; border-radius:8px; cursor:pointer; margin-bottom:15px;">← వెనక్కి</button>
             <h2>మా గురించి (About Us)</h2>
-            <p class="desc" style="text-align: left; margin-top: 10px;">
-                Pincode Hub అనేది భారతదేశంలోని అన్ని ప్రాంతాల పోస్టల్ పిన్‌కోడ్‌లు, మండలాలు మరియు జిల్లాల సమాచారాన్ని సులభంగా తెలుసుకోవడానికి రూపొందించబడిన డిజిటల్ ప్లాట్‌ఫారమ్. SR Media Buzz సౌజన్యంతో ఇది నిర్వహించబడుతోంది.
+            <p class="desc" style="text-align: left; margin-top: 10px; line-height: 1.6;">
+                Pincode Hub అనేది భారతదేశంలోని అన్ని ప్రాంతాల పోస్టల్ పిన్‌కోడ్‌లు, మండలాలు మరియు జిల్లాల సమాచారాన్ని వేగంగా అందించే ప్రముఖ డిజిటల్ ప్లాట్‌ఫారమ్. మా వెబ్‌సైట్ ద్వారా వినియోగదారులు ఎలాంటి ఇబ్బంది లేకుండా సులభంగా సమాచారాన్ని పొందవచ్చు. ఈ ప్లాట్‌ఫారమ్ ప్రకటనల మానిటైజేషన్ (Monetization) మార్గదర్శకాలకు అనుగుణంగా అత్యుత్తమ యూజర్ అనుభవాన్ని అందించడానికి రూపొందించబడింది. SR Media Buzz సౌజన్యంతో ఇది నిర్వహించబడుతోంది.
             </p>
         </div>
 
@@ -362,35 +408,39 @@
         <div id="contactPage" class="page-view">
             <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:8px 12px; border-radius:8px; cursor:pointer; margin-bottom:15px;">← వెనక్కి</button>
             <h2>మమ్మల్ని సంప్రదించండి (Contact Us)</h2>
-            <p class="desc" style="text-align: left; margin-top: 10px;">
-                మీకు ఏవైనా సందేహాలు లేదా సలహాలు ఉంటే మెనూలోని కస్టమర్ ఫారమ్ ద్వారా లేదా మా ఈమెయిల్ ద్వారా సంప్రదించవచ్చు.
+            <p class="desc" style="text-align: left; margin-top: 10px; line-height: 1.6;">
+                మీకు మా వెబ్‌సైట్‌కు సంబంధించి ఏవైనా సందేహాలు, సలహాలు లేదా ప్రకటనల (Advertising) గురించిన విచారణలు ఉంటే, మెనూలో ఉన్న కస్టమర్ ఫారమ్ ద్వారా లేదా మా అధికారిక ఈమెయిల్ ద్వారా మమ్మల్ని సంప్రదించవచ్చు.
             </p>
         </div>
 
-        <!-- PAGE 5: PRIVACY POLICY -->
+        <!-- PAGE 5: PRIVACY POLICY (Monetization Ready) -->
         <div id="privacyPage" class="page-view">
             <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:8px 12px; border-radius:8px; cursor:pointer; margin-bottom:15px;">← వెనక్కి</button>
             <h2>ప్రైవసీ పాలసీ (Privacy Policy)</h2>
-            <p class="desc" style="text-align: left; margin-top: 10px;">
-                మా వెబ్‌సైట్‌లో వినియోగదారుల గోప్యతకు ఎంతో ప్రాధాన్యత ఇవ్వబడుతుంది. మీ డేటా పూర్తిగా సురక్షితంగా ఉంటుంది.
+            <p class="desc" style="text-align: left; margin-top: 10px; line-height: 1.6;">
+                Pincode Hub వెబ్‌సైట్‌లో మా సందర్శకుల గోప్యతకు ఎంతో ప్రాధాన్యత ఇవ్వబడుతుంది. మా ప్లాట్‌ఫారమ్ గూగుల్ యాడ్సెంట్ (Google AdSense) మరియు ఇతర ప్రకటన నెట్‌వర్క్‌ల మానిటైజేషన్ విధానాలకు అనుగుణంగా నడుస్తుంది. థర్డ్-పార్టీ వెండర్‌లు, గూగుల్‌తో సహా, మా వెబ్‌సైట్‌లో లేదా ఇతర వెబ్‌సైట్‌లలో మీ మునుపటి సందర్శనల ఆధారంగా ప్రకటనలను అందించడానికి కుకీలను (Cookies) ఉపయోగిస్తారు. మీరు మీ బ్రౌజర్ సెట్టింగ్‌ల ద్వారా కుకీలను నిలిపివేయవచ్చు.
             </p>
         </div>
 
-        <!-- Visitors Counter (India & Foreign) -->
+        <!-- Visitors Counter with Live Increments -->
         <div class="visitor-counter">
             <div class="visitor-box">
                 🇮🇳 ఇండియా విజిటర్స్
-                <b id="indiaCount">14,820</b>
+                <b id="indiaCount">14,850</b>
             </div>
             <div class="visitor-box">
                 🌍 ఫారెన్ విజిటర్స్
-                <b id="foreignCount">1,245</b>
+                <b id="foreignCount">1,260</b>
             </div>
+        </div>
+
+        <div class="footer-credit">
+            ✨ SR Media Buzz Presentation
         </div>
     </div>
 
     <script>
-        // Sidebar Navigation Functions
+        // Sidebar Navigation
         function openNav() {
             document.getElementById("mySidebar").style.width = "280px";
         }
@@ -398,7 +448,6 @@
             document.getElementById("mySidebar").style.width = "0";
         }
 
-        // Page Switching Function (Multi-page simulation)
         function showPage(pageId) {
             document.querySelectorAll('.page-view').forEach(page => {
                 page.classList.remove('active');
@@ -407,12 +456,10 @@
             window.scrollTo(0, 0);
         }
 
-        // Customer Data Form Submission
+        // Customer Form
         function submitCustomerData() {
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
-            const msg = document.getElementById('custMsg').value.trim();
-
             if (!name || !phone) {
                 alert('దయచేసి పేరు మరియు ఫోన్ నంబర్ ఎంటర్ చేయండి!');
                 return;
@@ -424,93 +471,47 @@
             closeNav();
         }
 
-        // Global variable to hold fetched post office data
+        // Land Calculator Logic
+        function convertLand() {
+            const val = parseFloat(document.getElementById('landInput').value);
+            const unit = document.getElementById('landUnit').value;
+            const resBox = document.getElementById('landResult');
+            ifisNaN = isNaN(val);
+            if (isNaN(val) || val <= 0) {
+                resBox.innerText = 'దయచేసి సరైన విలువను ఇవ్వండి!';
+                return;
+            }
+            if (unit === 'cents') {
+                let acres = (val / 100).toFixed(2);
+                let guntas = (val * 1.21).toFixed(2);
+                resBox.innerText = `${val} సెంట్లు = ${acres} ఎకరాలు లేదా ${guntas} గుంటలు`;
+            } else if (unit === 'acres') {
+                let cents = (val * 100).toFixed(2);
+                let guntas = (val * 40).toFixed(2);
+                resBox.innerText = `${val} ఎకరాలు = ${cents} సెంట్లు లేదా ${guntas} గుంటలు`;
+            } else if (unit === 'guntas') {
+                let cents = (val / 1.21).toFixed(2);
+                let acres = (val / 40).toFixed(2);
+                resBox.innerText = `${val} గుంటలు = ${cents} సెంట్లు లేదా ${acres} ఎకరాలు`;
+            }
+        }
+
+        // Live Visitors Count Real-time Simulation
+        setInterval(() => {
+            const indiaEl = document.getElementById('indiaCount');
+            const foreignEl = document.getElementById('foreignCount');
+            if (indiaEl && Math.random() > 0.6) {
+                let currentIndia = parseInt(indiaEl.innerText.replace(/,/g, ''));
+                indiaEl.innerText = (currentIndia + 1).toLocaleString();
+            }
+            if (foreignEl && Math.random() > 0.8) {
+                let currentForeign = parseInt(foreignEl.innerText.replace(/,/g, ''));
+                foreignEl.innerText = (currentForeign + 1).toLocaleString();
+            }
+        }, 4000);
+
+        // Pincode Search API Logic
         let currentPostOffices = [];
 
         async function searchPincode() {
-            const query = document.getElementById('searchInput').value.trim();
-            const resultsContainer = document.getElementById('resultsContainer');
-            const loading = document.getElementById('loading');
-
-            if (!query) {
-                alert('దయచేసి ఏదైనా పిన్‌కోడ్ లేదా ప్రాంతం పేరు ఎంటర్ చేయండి!');
-                return;
-            }
-
-            resultsContainer.innerHTML = '';
-            loading.style.display = 'block';
-
-            try {
-                let url = '';
-                if (/^\d{6}$/.test(query)) {
-                    url = `https://api.postalpincode.in/pincode/${query}`;
-                } else {
-                    url = `https://api.postalpincode.in/postoffice/${encodeURIComponent(query)}`;
-                }
-
-                const response = await fetch(url);
-                const data = await response.json();
-
-                loading.style.display = 'none';
-
-                if (data && data[0].Status === 'Success') {
-                    currentPostOffices = data[0].PostOffice;
-                    let html = `<p style="font-size: 13px; color: #4ade80; margin-bottom: 5px;">మొత్తం ${currentPostOffices.length} ఫలితాలు కనుగొనబడ్డాయి (వివరాల కోసం క్లిక్ చేయండి):</p>`;
-                    
-                    currentPostOffices.forEach((po, index) => {
-                        html += `
-                            <div class="result-card" onclick="openDetails(${index})">
-                                <div class="result-info">
-                                    <h3>${po.Name}</h3>
-                                    <p>మండలం/తాలూకా: <b>${po.Taluk || po.Block || 'N/A'}</b></p>
-                                    <p>జిల్లా: <b>${po.District}</b> | రాష్ట్రం: <b>${po.State}</b></p>
-                                </div>
-                                <div class="pin-badge">${po.Pincode}</div>
-                            </div>
-                        `;
-                    });
-                    resultsContainer.innerHTML = html;
-                } else {
-                    resultsContainer.innerHTML = `
-                        <div class="error-box">
-                            సమాచారం లభించలేదు. దయచేసి సరైన పిన్‌కోడ్ లేదా పేరు ఎంటర్ చేయండి.
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                loading.style.display = 'none';
-                resultsContainer.innerHTML = `
-                    <div class="error-box">
-                        సర్వర్ కనెక్షన్ లోపం. దయచేసి మళ్లీ ప్రయత్నించండి.
-                    </div>
-                `;
-            }
-        }
-
-        // Open specific Post Office details page on click
-        function openDetails(index) {
-            const po = currentPostOffices[index];
-            if (!po) return;
-
-            const container = document.getElementById('detailedInfoContainer');
-            container.innerHTML = `
-                <h3 style="color: #fde047; font-size: 20px; margin-bottom: 15px;">${po.Name}</h3>
-                <p style="font-size: 14px; margin-bottom: 8px;"><b>పోస్ట్ ఆఫీస్ పేరు:</b> ${po.Name}</p>
-                <p style="font-size: 14px; margin-bottom: 8px;"><b>పిన్ కోడ్:</b> ${po.Pincode}</p>
-                <p style="font-size: 14px; margin-bottom: 8px;"><b>మండలం / తాలూకా:</b> ${po.Taluk || po.Block || 'N/A'}</p>
-                <p style="font-size: 14px; margin-bottom: 8px;"><b>జిల్లా:</b> ${po.District}</p>
-                <p style="font-size: 14px; margin-bottom: 8px;"><b>రాష్ట్రం:</b> ${po.State}</p>
-                <p style="font-size: 14px; margin-bottom: 8px;"><b>దేశం:</b> ${po.Country}</p>
-                <p style="font-size: 14px; margin-bottom: 8px;"><b>డెలివరీ స్థితి:</b> ${po.DeliveryStatus || 'Available'}</p>
-            `;
-            showPage('details');
-        }
-
-        document.getElementById('searchInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                searchPincode();
-            }
-        });
-    </script>
-</body>
-</html>
+            const query = document.getElementById('searchInput').value.
