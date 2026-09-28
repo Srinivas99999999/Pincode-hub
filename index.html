@@ -328,6 +328,26 @@
             font-weight: bold;
             color: white;
         }
+        .visitor-counter {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 12px 0;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .visitor-box {
+            font-size: 11px;
+            color: #d8b4fe;
+        }
+        .visitor-box b { 
+            display: block; 
+            font-size: 14px; 
+            color: #fde047; 
+            margin-top: 2px;
+        }
         .footer-links {
             display: flex;
             justify-content: center;
@@ -339,22 +359,12 @@
         .footer-links a { color: #d8b4fe; text-decoration: underline; cursor: pointer; }
         .footer-copy {
             text-align: center;
-            font-size: 10px;
-            color: #a855f7;
-            margin-top: 10px;
+            font-size: 11px;
+            color: #fde047;
+            margin-top: 15px;
+            padding-bottom: 5px;
             line-height: 1.4;
         }
-        .visitor-counter {
-            margin-top: 12px;
-            padding-top: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            font-size: 10px;
-            color: #e9d5ff;
-        }
-        .visitor-box b { display: block; font-size: 12px; color: #fde047; }
         .page-view { display: none; }
         .page-view.active { display: block; }
     </style>
@@ -439,6 +449,18 @@
                 <div id="resultsContainer" class="results"></div>
             </div>
 
+            <!-- Live Visitor Counter Inside Container -->
+            <div class="visitor-counter">
+                <div class="visitor-box">
+                    🇮🇳 ఇండియా విజిటర్స్
+                    <b id="indiaCount">15,420</b>
+                </div>
+                <div class="visitor-box">
+                    🌍 ఫారెన్ విజిటర్స్
+                    <b id="foreignCount">1,350</b>
+                </div>
+            </div>
+
             <div class="utility-box">
                 <h3>🚨 అత్యవసర నంబర్లు (Emergency Helpline)</h3>
                 <div class="emergency-grid">
@@ -491,10 +513,7 @@
         </div>
 
         <div id="privacyPage" class="page-view">
-            <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:12px; margin-bottom:10px;">← వెనక్కి</button>
-            <h2 style="font-size: 16px; margin-bottom: 10px; text-align: center;">ప్రైవసీ పాలసీ (Privacy Policy)</h2>
-            <p style="font-size: 12px; line-height: 1.6; color: #e9d5ff;">
-                Pincode Hub.store వెబ్‌సైట్‌లో మా సందర్శకుల గోప్యతకు అత్యంత ప్రాధాన్యత ఇవ్వబడుతుంది. మా ప్లాట్‌ఫారమ్ గూగుల్ యాడ్సెంట్ (Google AdSense) మరియు ఇతర ప్రకటన నెట్‌వర్క్‌ల మానిటైజేషన్ మార్గదర్శకాలకు పూర్తిగా అనుగుణంగా నడుస్తుంది. థర్డ్-పార్టీ వెండర్‌లు, గూగుల్‌తో సహా, మా వెబ్‌సైట్‌లో మీ మునుపటి సందర్శనల ఆధారంగా ప్రకటనలను ప్రదర్శించడానికి కుకీలను (Cookies) ఉపయోగిస్తారు
+            <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:6px 10px; border-radius:6px; 
                     <script>
         function openNav() {
             document.getElementById("mySidebar").style.width = "260px";
@@ -664,7 +683,22 @@
             }
         });
     </script>
+                    <div class="visitor-counter">
+        <div class="visitor-box">
+            🇮🇳 ఇండియా విజిటర్స్
+            <b id="indiaCount">15,420</b>
+        </div>
+        <div class="visitor-box">
+            🌍 ఫారెన్ విజిటర్స్
+            <b id="foreignCount">1,350</b>
+        </div>
+    </div>
+
+    <div class="footer-copy">
+        © 2026 Pincode Hub.store | Designed & Managed by SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)
+    </div>
+            </div>
+                
 </body>
-        </html>
-            
+            </html>
                 
