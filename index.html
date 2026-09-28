@@ -176,6 +176,8 @@
             font-size: 11px;
             cursor: pointer;
             font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
         }
         .utility-box {
             background: rgba(0, 0, 0, 0.2);
@@ -366,6 +368,7 @@
         <a href="#" onclick="showPage('contact'); closeNav();">📞 కాంటాక్ట్ (Contact)</a>
         <a href="#" onclick="showPage('privacy'); closeNav();">🔒 ప్రైవసీ పాలసీ (Privacy Policy)</a>
         <a href="#" onclick="showPage('terms'); closeNav();">📄 టర్మ్స్ & కండిషన్స్ (Terms)</a>
+        <a href="#" onclick="showPage('monetization'); closeNav();">💰 మానిటైజేషన్ (Monetization)</a>
         
         <div class="sidebar-form">
             <h4 style="font-size: 13px; margin-bottom: 8px; color: #fde047;">కస్టమర్ వివరాలు పంపండి</h4>
@@ -395,11 +398,11 @@
             <div class="top-grid">
                 <div class="top-box">
                     <span>GPS లొకేషన్</span>
-                    <button class="top-btn" onclick="getGPSLocation()">లొకేషన్ పొందండి</button>
+                    <a href="https://www.google.com/maps" target="_blank" class="top-btn">లొకేషన్ పొందండి</a>
                 </div>
                 <div class="top-box">
                     <span>వాతావరణం (Weather)</span>
-                    <button class="top-btn" onclick="getWeatherInfo()">చూడండి</button>
+                    <a href="https://weather.com/telugu" target="_blank" class="top-btn">చూడండి</a>
                 </div>
             </div>
             <div id="locationResult" style="font-size: 11px; color: #4ade80; text-align: center; margin-bottom: 10px;"></div>
@@ -472,7 +475,7 @@
             <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:12px; margin-bottom:10px;">← వెనక్కి</button>
             <h2 style="font-size: 16px; margin-bottom: 10px; text-align: center;">మా గురించి (About Us)</h2>
             <p style="font-size: 12px; line-height: 1.6; color: #e9d5ff;">
-                Pincode Hub.store అనేది భారతదేశంలోని అన్ని ప్రాంతాల పోస్టల్ పిన్‌కోడ్‌లు, మండలాలు మరియు జిల్లాల సమాచారాన్ని అత్యంత వేగంగా అందించే ప్రముఖ డిజిటల్ ప్లాట్‌ఫారమ్. వినియోగదారులకు ఖచ్చితమైన సమాచారాన్ని అందించడమే మా ఉద్దేశం. SR Media Buzz సౌజన్యంతో ఇది నిర్వహించబడుతోంది.
+                Pincode Hub.store అనేది భారతదేశంలోని అన్ని ప్రాంతాల పోస్టల్ పిన్‌కోడ్‌లు, మండలాలు మరియు జిల్లాల సమాచారాన్ని అత్యంత వేగంగా మరియు కచ్చితంగా అందించే ప్రముఖ డిజిటల్ ప్లాట్‌ఫారమ్. మా ప్లాట్‌ఫారమ్ ద్వారా వినియోగదారులు ఏ ప్రాంత పిన్‌కోడ్‌నైనా క్షణాల్లో వెతుక్కోవచ్చు. SR Media Buzz సౌజన్యంతో ఇది అత్యుత్తమంగా నిర్వహించబడుతోంది.
             </p>
         </div>
 
@@ -480,7 +483,10 @@
             <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:12px; margin-bottom:10px;">← వెనక్కి</button>
             <h2 style="font-size: 16px; margin-bottom: 10px; text-align: center;">మమ్మల్ని సంప్రదించండి (Contact Us)</h2>
             <p style="font-size: 12px; line-height: 1.6; color: #e9d5ff;">
-                మా వెబ్‌సైట్‌కు సంబంధించి ఏవైనా సందేహాలు లేదా సలహాలు ఉంటే మెనూలోని కస్టమር ఫారమ్ ద్వారా లేదా అధికారిక ఈమెయిల్ ద్వారా సంప్రదించవచ్చు.
+                మీకు మా వెబ్‌సైట్ (Pincode Hub.store) గురించి ఏవైనా సందేహాలు, సలహాలు లేదా వ్యాపార విచారణలు ఉంటే మమ్మల్ని సంప్రదించవచ్చు.<br><br>
+                <b>నిర్వహణ:</b> SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)<br>
+                <b>ఈమెయిల్:</b> support@pincodehub.store<br>
+                <b>చిరునామా:</b> జగన్నాధపురం, భారతదేశం.
             </p>
         </div>
 
@@ -488,15 +494,7 @@
             <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:12px; margin-bottom:10px;">← వెనక్కి</button>
             <h2 style="font-size: 16px; margin-bottom: 10px; text-align: center;">ప్రైవసీ పాలసీ (Privacy Policy)</h2>
             <p style="font-size: 12px; line-height: 1.6; color: #e9d5ff;">
-                Pincode Hub.store వెబ్‌సైట్‌లో సందర్శకుల గోప్యతకు ఎంతో ప్రాధాన్యత ఇవ్వబడుతుంది. మా ప్లాట్‌ఫారమ్ గూగుల్ యాడ్సెంట్ ప్రకటనల విధానాలకు అనుగుణంగా నడుస్తుంది.
-            </p>
-        </div>
-
-        <div id="termsPage" class="page-view">
-            <button onclick="showPage('home')" style="background: rgba(255,255,255,0.2); border:none; color:white; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:12px; margin-bottom:10px;">← వెనక్కి</button>
-            <h2 style="font-size: 16px; margin-bottom: 10px; text-align: center;">నిబంధనలు & షరతులు (Terms & Conditions)</h2>
-            <p style="font-size: 12px; line-height: 1.6; color: #e9d5ff;">
-                ఈ వెబ్‌సైట్‌ను ఉపయోగించడం ద్వారా మీరు మా నిబంధనలకు అంగీకరిస్తున్నారు. ఇక్కడ అందించబడిన పోస్టల్ సమాచారం ప్రభుత్వ అధికారిక డేటాబేస
+                Pincode Hub.store వెబ్‌సైట్‌లో మా సందర్శకుల గోప్యతకు అత్యంత ప్రాధాన్యత ఇవ్వబడుతుంది. మా ప్లాట్‌ఫారమ్ గూగుల్ యాడ్సెంట్ (Google AdSense) మరియు ఇతర ప్రకటన నెట్‌వర్క్‌ల మానిటైజేషన్ మార్గదర్శకాలకు పూర్తిగా అనుగుణంగా నడుస్తుంది. థర్డ్-పార్టీ వెండర్‌లు, గూగుల్‌తో సహా, మా వెబ్‌సైట్‌లో మీ మునుపటి సందర్శనల ఆధారంగా ప్రకటనలను ప్రదర్శించడానికి కుకీలను (Cookies) ఉపయోగిస్తారు
                     <script>
         function openNav() {
             document.getElementById("mySidebar").style.width = "260px";
@@ -548,54 +546,6 @@
                 let cents = (val / 1.21).toFixed(2);
                 let acres = (val / 40).toFixed(2);
                 resBox.innerText = `${val} గుంటలు = ${cents} సెంట్లు లేదా ${acres} ఎకరాలు`;
-            }
-        }
-
-        function getGPSLocation() {
-            const res = document.getElementById('locationResult');
-            if (navigator.geolocation) {
-                res.innerText = "లొకేషన్ సేకరించబడుతోంది... దయచేసి అనుమతించండి.";
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const lat = position.coords.latitude.toFixed(4);
-                        const lon = position.coords.longitude.toFixed(4);
-                        res.innerText = `📍 మీ లొకేషన్ కనుగొనబడింది! Lat: ${lat}, Lon: ${lon}`;
-                    },
-                    (error) => {
-                        res.innerText = "లొకేషన్ యాక్సెస్ నిరాకరించబడింది లేదా అందుబాటులో లేదు.";
-                    }
-                );
-            } else {
-                res.innerText = "మీ బ్రౌజర్ లొకేషన్‌ను సపోర్ట్ చేయదు.";
-            }
-        }
-
-        function getWeatherInfo() {
-            const res = document.getElementById('locationResult');
-            if (navigator.geolocation) {
-                res.innerText = "వాతావరణ సమాచారం సేకరించబడుతోంది...";
-                navigator.geolocation.getCurrentPosition(
-                    async (position) => {
-                        const lat = position.coords.latitude;
-                        const lon = position.coords.longitude;
-                        try {
-                            const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
-                            const data = await response.json();
-                            if (data && data.current_weather) {
-                                res.innerText = `🌤️ ప్రస్తుత ఉష్ణోగ్రత: ${data.current_weather.temperature}°C (గాలి వేగం: ${data.current_weather.windspeed} km/h)`;
-                            } else {
-                                res.innerText = "వాతావరణ సమాచారం లభించలేదు.";
-                            }
-                        } catch (err) {
-                            res.innerText = "వాతావరణ సర్వర్ కనెక్షన్ లోపం.";
-                        }
-                    },
-                    (error) => {
-                        res.innerText = "వాతావరణం చూడటానికి లొకేషన్ అనుమతి అవసరం.";
-                    }
-                );
-            } else {
-                res.innerText = "వాతావరణ సేవ మీ బ్రౌజర్‌లో అందుబాటులో లేదు.";
             }
         }
 
@@ -717,3 +667,4 @@
 </body>
         </html>
             
+                
