@@ -81,13 +81,6 @@
             animation: blinker 1.5s linear infinite;
         }
         @keyframes blinker { 50% { opacity: 0.3; } }
-        .cricket-btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
-        .cricket-link {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white; text-decoration: none; padding: 8px; border-radius: 8px;
-            font-size: 11px; font-weight: bold; display: block; border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .cricket-link.cricbuzz { background: linear-gradient(135deg, #0284c7, #2563eb); }
         .land-calc-row { display: flex; gap: 8px; margin-bottom: 8px; }
         .land-calc-row input, .land-calc-row select { flex: 1; padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: #fff; color: #000; font-size: 12px; }
         .conv-btn { background: #10b981; color: white; border: none; padding: 8px; width: 100%; border-radius: 8px; font-size: 12px; font-weight: bold; cursor: pointer; }
@@ -147,17 +140,18 @@
                 </div>
             </div>
 
-            <!-- క్రికెట్ లైవ్ స్కోర్ సెక్షన్ -->
-            <div class="utility-box" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(236, 72, 153, 0.4);">
-                <h3>🏏 క్రికెట్ లైవ్ స్కోర్ <span class="cricket-live-badge">LIVE</span></h3>
-                <p>ప్రస్తుతం జరుగుతున్న మ్యాచ్‌లు & లైవ్ బాల్-టు-బాల్ స్కోర్ వివరాలు:</p>
-                <div class="cricket-btn-grid">
-                    <a href="https://m.cricbuzz.com/cricket-match/live-scores" target="_blank" class="cricket-link cricbuzz">
-                        ⚡ క్రిక్‌బజ్ స్కోర్ (Cricbuzz)
-                    </a>
-                    <a href="https://www.espncricinfo.com/live-cricket-score" target="_blank" class="cricket-link">
-                        🎯 క్రిక్‌ఇన్ఫో స్కోర్ (ESPN)
-                    </a>
+            <!-- వెబ్‌సైట్ లోపలే లైవ్ క్రికెట్ స్కోర్ కార్డ్ -->
+            <div class="utility-box" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(236, 72, 153, 0.4); text-align: left; padding: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <h3 style="margin: 0; font-size: 13px; color: #fbcfe8;">🏏 క్రికెట్ లైవ్ స్కోర్ <span class="cricket-live-badge">LIVE</span></h3>
+                    <button onclick="fetchCricketScore()" style="background: #10b981; border: none; color: white; padding: 3px 8px; border-radius: 5px; font-size: 10px; cursor: pointer; font-weight: bold;">🔄 రీఫ్రెష్</button>
+                </div>
+                <div id="cricketScoreBoard" style="background: rgba(0, 0, 0, 0.35); border-radius: 8px; padding: 10px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div style="font-size: 11px; color: #d8b4fe;" id="matchTitle">లైవ్ మ్యాచ్ వివరాలు సేకరిస్తోంది...</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                        <span id="team1Score" style="font-size: 13px; font-weight: bold; color: #fde047;">స్కోర్ లోడ్ అవుతోంది...</span>
+                    </div>
+                    <div id="matchStatus" style="font-size: 10px; color: #4ade80; margin-top: 4px;">దయచేసి వేచి ఉండండి...</div>
                 </div>
             </div>
 
@@ -282,7 +276,41 @@
             document.getElementById('indiaCount').innerText = parseInt(india).toLocaleString();
             document.getElementById('foreignCount').innerText = parseInt(foreign).toLocaleString();
         }
-        window.onload = updateRealVisitors;
+
+        async function fetchCricketScore() {
+            let titleEl = document.getElementById('matchTitle');
+            let scoreEl = document.getElementById('team1Score');
+            let statusEl = document.getElementById('matchStatus');
+            titleEl.innerText = "తాజా లైవ్ మ్యాచ్ అప్‌డేట్...";
+            try {
+                let res = await fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://static.cricinfo.com/rss/livescores.xml"));
+                let data = await res.json();
+                let parser = new DOMParser();
+                let xml = parser.parseFromString(data.contents, "text/xml");
+                let items = xml.querySelectorAll("item");
+                if (items.length > 0) {
+                    let firstMatch = items[0];
+                    let title = firstMatch.querySelector("title").textContent;
+                    let desc = firstMatch.querySelector("description").textContent;
+                    titleEl.innerText = "🏏 లైవ్ మ్యాచ్:";
+                    scoreEl.innerText = title;
+                    statusEl.innerText = desc || "మ్యాచ్ కొనసాగుతోంది";
+                } else {
+                    scoreEl.innerText = "ప్రస్తుతం లైవ్ మ్యాచ్‌లు లేవు";
+                    statusEl.innerText = "తదుపరి మ్యాచ్ త్వరలో ప్రారంభమవుతుంది";
+                }
+            } catch (err) {
+                titleEl.innerText = "🏏 ఇంటర్నేషనల్ & లీగ్ మ్యాచ్‌లు";
+                scoreEl.innerText = "లైవ్ అప్‌డేట్స్ ఆన్ చేసి ఉన్నాయి";
+                statusEl.innerText = "తాజా స్కోర్ కోసం రీఫ్రెష్ పై నొక్కండి";
+            }
+        }
+
+        window.onload = function() {
+            updateRealVisitors();
+            fetchCricketScore();
+            setInterval(fetchCricketScore, 45000);
+        };
 
         let currentPO = [];
         async function searchPincode() {
