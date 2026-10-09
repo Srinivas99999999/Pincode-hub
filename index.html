@@ -69,6 +69,25 @@
         .utility-box { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.15); padding: 12px; border-radius: 10px; margin-bottom: 12px; text-align: center; }
         .utility-box h3 { font-size: 13px; color: #fbcfe8; margin-bottom: 6px; }
         .utility-box p { font-size: 11px; color: #fed7aa; }
+        .cricket-live-badge {
+            display: inline-block;
+            background: #ef4444;
+            color: #fff;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+            animation: blinker 1.5s linear infinite;
+        }
+        @keyframes blinker { 50% { opacity: 0.3; } }
+        .cricket-btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+        .cricket-link {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white; text-decoration: none; padding: 8px; border-radius: 8px;
+            font-size: 11px; font-weight: bold; display: block; border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cricket-link.cricbuzz { background: linear-gradient(135deg, #0284c7, #2563eb); }
         .land-calc-row { display: flex; gap: 8px; margin-bottom: 8px; }
         .land-calc-row input, .land-calc-row select { flex: 1; padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: #fff; color: #000; font-size: 12px; }
         .conv-btn { background: #10b981; color: white; border: none; padding: 8px; width: 100%; border-radius: 8px; font-size: 12px; font-weight: bold; cursor: pointer; }
@@ -76,9 +95,6 @@
         button.search-btn { background: linear-gradient(135deg, #ec4899, #f97316); color: white; border: none; padding: 12px; font-size: 14px; font-weight: bold; border-radius: 10px; cursor: pointer; width: 100%; margin-top: 8px; }
         .emergency-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 6px; }
         .emergency-btn { background: rgba(239, 68, 68, 0.3); border: 1px solid rgba(239, 68, 68, 0.5); padding: 6px; border-radius: 6px; color: white; text-align: center; text-decoration: none; font-size: 11px; font-weight: bold; display: block; }
-        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
-        .social-btn { padding: 8px; border-radius: 6px; color: white; text-align: center; text-decoration: none; font-size: 11px; font-weight: bold; display: block; }
-        .whatsapp { background: #22c55e; } .youtube { background: #ef4444; } .facebook { background: #3b82f6; } .instagram { background: linear-gradient(45deg, #f59e0b, #ec4899, #8b5cf6); }
         .visitor-counter { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); margin: 15px 0 10px 0; padding: 12px; border-radius: 10px; display: flex; justify-content: space-around; text-align: center; }
         .visitor-box { font-size: 11px; color: #d8b4fe; }
         .visitor-box b { display: block; font-size: 15px; color: #fde047; margin-top: 3px; }
@@ -131,9 +147,18 @@
                 </div>
             </div>
 
-            <div class="utility-box">
-                <h3>🏏 క్రికెట్ లైవ్ స్కోర్ (Cricket Live)</h3>
-                <p>ప్రస్తుతం లైవ్ మ్యాచ్ అప్‌డేట్‌లు అందుబాటులో ఉన్నాయి.</p>
+            <!-- క్రికెట్ లైవ్ స్కోర్ సెక్షన్ -->
+            <div class="utility-box" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(236, 72, 153, 0.4);">
+                <h3>🏏 క్రికెట్ లైవ్ స్కోర్ <span class="cricket-live-badge">LIVE</span></h3>
+                <p>ప్రస్తుతం జరుగుతున్న మ్యాచ్‌లు & లైవ్ బాల్-టు-బాల్ స్కోర్ వివరాలు:</p>
+                <div class="cricket-btn-grid">
+                    <a href="https://m.cricbuzz.com/cricket-match/live-scores" target="_blank" class="cricket-link cricbuzz">
+                        ⚡ క్రిక్‌బజ్ స్కోర్ (Cricbuzz)
+                    </a>
+                    <a href="https://www.espncricinfo.com/live-cricket-score" target="_blank" class="cricket-link">
+                        🎯 క్రిక్‌ఇన్ఫో స్కోర్ (ESPN)
+                    </a>
+                </div>
             </div>
 
             <div class="utility-box">
@@ -149,8 +174,7 @@
                 <button class="conv-btn" onclick="convertLand()">లెక్కించండి (Convert)</button>
                 <p id="landResult" style="margin-top:6px; font-size:11px; color:#4ade80; text-align:center;"></p>
             </div>
-
-            <div class="utility-box" style="background: rgba(255,255,255,0.05);">
+                        <div class="utility-box" style="background: rgba(255,255,255,0.05);">
                 <div class="search-title">Find Your Pincode And PostOffice</div>
                 <input type="text" id="searchInput" placeholder="ఉదా: 500082 లేదా హైదరాబాద్..." style="margin-top: 8px;">
                 <button class="search-btn" onclick="searchPincode()">వెతకండి / Search</button>
@@ -221,7 +245,8 @@
             <a onclick="showPage('monetization')">Monetization</a>
         </div>
     </div>
-        <script>
+
+    <script>
         function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
         function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
 
@@ -300,7 +325,9 @@
             showPage('details');
         }
 
-        document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') searchPincode(); });
+        document.getElementById('searchInput').addEventListener('keypress', e => { 
+            if (e.key === 'Enter') searchPincode(); 
+        });
     </script>
 </body>
 </html>
