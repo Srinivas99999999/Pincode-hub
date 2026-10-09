@@ -68,7 +68,6 @@
         .top-btn { background: #7e22ce; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; }
         .utility-box { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.15); padding: 12px; border-radius: 10px; margin-bottom: 12px; text-align: center; }
         .utility-box h3 { font-size: 13px; color: #fbcfe8; margin-bottom: 6px; }
-        .utility-box p { font-size: 11px; color: #fed7aa; }
         .cricket-live-badge {
             display: inline-block;
             background: #ef4444;
@@ -140,24 +139,17 @@
                 </div>
             </div>
 
-            <!-- క్రికెట్ లైవ్ స్కోర్ సెక్షన్ -->
+            <!-- వెబ్‌సైట్ లోపలే వర్కింగ్ క్రికెట్ లైవ్ స్కోర్ బాక్స్ -->
             <div class="utility-box" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(236, 72, 153, 0.4); text-align: left; padding: 12px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                     <h3 style="margin: 0; font-size: 13px; color: #fbcfe8;">🏏 క్రికెట్ లైవ్ స్కోర్ <span class="cricket-live-badge">LIVE</span></h3>
-                    <span style="font-size: 10px; color: #4ade80; font-weight: bold;">● బాల్ టు బాల్</span>
+                    <button onclick="getLiveCricketScore(true)" style="background: #10b981; border: none; color: white; padding: 3px 8px; border-radius: 5px; font-size: 10px; cursor: pointer; font-weight: bold;">🔄 రీఫ్రెష్</button>
                 </div>
                 
-                <div id="cricketScoreBoard" style="background: rgba(0, 0, 0, 0.4); border-radius: 8px; padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center;">
-                    <p style="font-size: 11px; color: #d8b4fe; margin-bottom: 5px;">తాజా అంతర్జాతీయ & లీగ్ మ్యాచ్‌ల స్కోరు</p>
-                    <div style="font-size: 13px; font-weight: bold; color: #fde047; margin-bottom: 8px;">
-                        ⚡ లైవ్ మ్యాచ్ స్కోర్‌కార్డ్ & కామెంట్రీ
-                    </div>
-                    <button onclick="toggleScoreWidget()" style="background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: bold; cursor: pointer; width: 100%;">
-                        📊 ఇక్కడే లైవ్ స్కోర్ చూడండి (View Score)
-                    </button>
-                    <div id="liveFrameContainer" style="display: none; margin-top: 10px;">
-                        <iframe id="scoreIframe" src="" style="width: 100%; height: 280px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: #fff;"></iframe>
-                    </div>
+                <div id="cricketBox" style="background: rgba(0, 0, 0, 0.35); border-radius: 8px; padding: 10px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div id="cMatchName" style="font-size: 12px; font-weight: bold; color: #fde047;">లైవ్ స్కోర్ లోడ్ అవుతోంది...</div>
+                    <div id="cMatchScore" style="font-size: 13px; color: #ffffff; margin-top: 5px; font-weight: bold;"></div>
+                    <div id="cMatchStatus" style="font-size: 10px; color: #4ade80; margin-top: 4px;">దయచేసి వేచి ఉండండి...</div>
                 </div>
             </div>
 
@@ -283,18 +275,64 @@
             document.getElementById('foreignCount').innerText = parseInt(foreign).toLocaleString();
         }
 
-        function toggleScoreWidget() {
-            let container = document.getElementById('liveFrameContainer');
-            let iframe = document.getElementById('scoreIframe');
-            if (container.style.display === "none") {
-                container.style.display = "block";
-                iframe.src = "https://m.cricbuzz.com/cricket-match/live-scores";
-            } else {
-                container.style.display = "none";
+        const CRIC_API_KEY = "9c3d9842-2ee2-48fe-820c-5da33bc01b34";
+
+        async function getLiveCricketScore(forceRefresh = false) {
+            let nameEl = document.getElementById('cMatchName');
+            let statusEl = document.getElementById('cMatchStatus');
+            let scoreEl = document.getElementById('cMatchScore');
+
+            let cachedData = sessionStorage.getItem('cric_data_cache');
+            let cacheTime = sessionStorage.getItem('cric_data_time');
+            let now = Date.now();
+
+            if (!forceRefresh && cachedData && cacheTime && (now - cacheTime < 180000)) {
+                renderCricketData(JSON.parse(cachedData));
+                return;
+            }
+
+            nameEl.innerText = "తాజా స్కోర్ సేకరిస్తోంది...";
+            try {
+                let res = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${CRIC_API_KEY}&offset=0`);
+                let data = await res.json();
+
+                if (data.status === "success" && data.data && data.data.length > 0) {
+                    sessionStorage.setItem('cric_data_cache', JSON.stringify(data.data));
+                    sessionStorage.setItem('cric_data_time', now);
+                    renderCricketData(data.data);
+                } else {
+                    nameEl.innerText = "🏏 ప్రస్తుతం లైవ్ మ్యాచ్‌లు లేవు";
+                    statusEl.innerText = "తదుపరి మ్యాచ్ త్వరలో ప్రారంభమవుతుంది.";
+                    scoreEl.innerText = "";
+                }
+            } catch (err) {
+                nameEl.innerText = "🏏 మ్యాచ్ అప్‌డేట్స్";
+                statusEl.innerText = "స్కోర్ లోడ్ అవ్వడంలో నెట్‌వర్క్ లోపం.";
             }
         }
 
-        window.onload = updateRealVisitors;
+        function renderCricketData(matches) {
+            let nameEl = document.getElementById('cMatchName');
+            let statusEl = document.getElementById('cMatchStatus');
+            let scoreEl = document.getElementById('cMatchScore');
+
+            let match = matches.find(m => m.matchStarted && !m.matchEnded) || matches[0];
+            nameEl.innerText = "🏏 " + match.name;
+            statusEl.innerText = "📢 " + match.status;
+
+            if (match.score && match.score.length > 0) {
+                let scoreTxt = match.score.map(s => `${s.inning}: ${s.r}/${s.w} (${s.o} ov)`).join(" | ");
+                scoreEl.innerText = scoreTxt;
+            } else {
+                scoreEl.innerText = "స్కోర్ వివరాలు త్వరలో అప్‌డేట్ అవుతాయి";
+            }
+        }
+
+        window.onload = function() {
+            updateRealVisitors();
+            getLiveCricketScore();
+            setInterval(() => getLiveCricketScore(), 180000);
+        };
 
         let currentPO = [];
         async function searchPincode() {
